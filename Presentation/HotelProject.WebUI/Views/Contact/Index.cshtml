@@ -1,0 +1,87 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+@await Component.InvokeAsync("_HeadViewPartial")
+
+<body>
+	<div class="container-xxl bg-white p-0">
+
+		<!-- Spinner Start -->
+		@await Component.InvokeAsync("_SpinnerViewPartial")
+		<!-- Spinner End -->
+		<!-- Header Start -->
+		@await Component.InvokeAsync("_NavbarViewPartial")
+		<!-- Header End -->
+		<!-- Page Header Start -->
+		<div class="container-fluid page-header mb-5 p-0" style="background-image: url(/hotel-html-template/img/carousel-1.jpg);">
+			<div class="container-fluid page-header-inner py-5">
+				<div class="container text-center pb-5">
+					<h1 class="display-3 text-white mb-3 animated slideInDown">İletişim</h1>
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb justify-content-center text-uppercase">
+							<li class="breadcrumb-item"><a href="/Default/Index/">Ana sayfa</a></li>
+							<li class="breadcrumb-item text-white active" aria-current="page">İLETİŞİM</li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<!-- Page Header End -->
+		<!-- Contact Start -->
+		<div class="container-xxl py-5">
+			<div class="container">
+				<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+					<h6 class="section-title text-center text-primary text-uppercase">Bizimle İletişime Geçin</h6>
+					<h1 class="mb-5"><span class="text-primary text-uppercase">Aklınızdakini Bize Sorun</span></h1>
+				</div>
+				<div class="row g-4">
+					<div class="col-12">
+						<div class="row gy-4">
+							<div class="col-md-4">
+								<h6 class="section-title text-start text-primary text-uppercase">Rezervason</h6>
+								<p><i class="fa fa-envelope-open text-primary me-2"></i>hotelapi@example.com</p>
+							</div>
+							<div class="col-md-4">
+								<h6 class="section-title text-start text-primary text-uppercase">Genel</h6>
+								<p><i class="fa fa-envelope-open text-primary me-2"></i>hotelapi@example.com</p>
+							</div>
+							<div class="col-md-4">
+								<h6 class="section-title text-start text-primary text-uppercase">Teknik Yardım</h6>
+								<p><i class="fa fa-envelope-open text-primary me-2"></i>hotelapi@example.com</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 wow fadeIn" data-wow-delay="0.1s">
+						<iframe class="position-relative rounded w-100 h-100"
+								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2771.136369754109!2d27.42804173476937!3d37.034892909938925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14be6d318f1c58bd%3A0xad3eb9632e29be62!2sBy%20Muhtar%20Otel%20Bodrum!5e1!3m2!1str!2str!4v1736940474809!5m2!1str!2str"
+								frameborder="0" style="min-height: 350px; border:0;" allowfullscreen="" aria-hidden="false"
+								tabindex="0"></iframe>
+					</div>
+					@* Contact Form *@
+					@await Html.PartialAsync("ContactForm")
+				</div>
+			</div>
+		</div>
+		<!-- Contact End -->
+		<!-- Newsletter Start -->
+		@* @await Component.InvokeAsync("_NewsletterViewPartial") *@
+		@await Html.PartialAsync("~/Views/Default/SubscribeToNewsletter.cshtml")
+		<!-- Newsletter End -->
+		<!-- Footer Start -->
+		@await Component.InvokeAsync("_FooterViewPartial")
+		<!-- Footer End -->
+		<!-- Back to Top -->
+		<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+	</div>
+
+	<!-- JavaScript Libraries -->
+	@await Component.InvokeAsync("_ScriptsViewPartial")
+
+</body>
+
+</html>
+

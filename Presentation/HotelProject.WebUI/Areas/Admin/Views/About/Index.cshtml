@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ResultAboutDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Hakkımızda</h4>
+        <div class="table-responsive">
+            <table class="table header-border table-hover verticle-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Başlık 1</th>
+                        <th scope="col">Başlık 2</th>
+                        <th scope="col">İçerik</th>
+                        <th scope="col" class="text-center">Düzenle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        string aboutContent;
+                        if (item.AboutContent.Length >= 100){
+                            aboutContent = $"{item.AboutContent.Substring(0, 180)}...";
+                        }
+                        else {
+                            aboutContent = item.AboutContent;
+                        }
+
+                        <tr>
+                            <th>@count</th>
+                            <td>@item.Title1</td>
+                            <td>@item.Title2</td>
+                            <td>@aboutContent</td>
+                            <td class="text-center"><a href="/Admin/About/UpdateAbout/@item.AboutId" class="btn btn-rounded btn-outline-primary">Düzenle</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

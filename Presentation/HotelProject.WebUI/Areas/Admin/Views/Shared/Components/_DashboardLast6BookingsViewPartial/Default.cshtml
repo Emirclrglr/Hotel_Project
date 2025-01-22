@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ResultBookingDto>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-body">
+				<h4>Son 6 Rezervasyon</h4>
+				<div class="active-member">
+					<div class="table-responsive">
+						<table class="table table-xs mb-0">
+							<thead>
+								<tr>
+									<th>Misafir</th>
+									<th class="text-center">Yetişkin Sayısı</th>
+									<th class="text-center">Çocuk Sayısı</th>
+									<th class="text-center">CheckIn Tarihi</th>
+									<th class="text-center">CheckOut Tarihi</th>
+									<th class="text-center">Durum</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									string statusClass = "";
+									if (item.Status == "Onay Bekliyor") { statusClass = "badge badge-warning"; }
+									else if (item.Status == "Onaylandı") { statusClass = "badge badge-success"; }
+									else if (item.Status == "İptal Edildi") { statusClass = "badge badge-danger"; }
+
+									<tr>
+										<td>@item.Name</td>
+										<td class="text-center">@item.AdultCount</td>
+										<td class="text-center">@item.ChildCount</td>
+										<td class="text-center">@(((DateTime)item.CheckIn).ToString("dd MMMM yyyy"))</td>
+										<td class="text-center">@(((DateTime)item.CheckOut).ToString("dd MMMM yyyy"))</td>
+										<td class="text-center"><span class="@statusClass text-white">@item.Status</span></td>
+									</tr>
+								}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

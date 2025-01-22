@@ -1,0 +1,82 @@
+﻿<div class="nk-sidebar">
+    <div class="nk-nav-scroll">
+        <ul class="metismenu" id="menu">
+            <li>
+                <a href="/Admin/Dashboard/Index/" aria-expanded="false" id="navitem">
+                    <i class="fa fa-th-large menu-icon pb-1"></i><span class="nav-text" style="font-size: 16px; margin-left: 5px;">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Admin/Staff/Index/" aria-expanded="false" id="navitem">
+                    <i class="fa fa-users menu-icon pb-1"></i><span class="nav-text" style="font-size: 16px; margin-left: 5px;">Personeller</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Admin/Testimonial/Index/" aria-expanded="false" id="navitem">
+                    <i class="fa fa-quote-right menu-icon pb-1"></i><span class="nav-text" style="font-size: 16px; margin-left: 5px;">Referanslar</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Admin/Service/Index/" aria-expanded="false" id="navitem">
+                    <i class="fa fa-cog menu-icon pb-1"></i><span class="nav-text" style="font-size: 16px; margin-left: 5px;">Hizmetler</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Admin/Room/Index/" aria-expanded="false" id="navitem">
+                    <i class="fa fa-bed menu-icon pb-1"></i><span class="nav-text" style="font-size: 16px; margin-left: 5px;">Odalar</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Admin/Subscribe/Index/" aria-expanded="false" id="navitem">
+                    <i class="fa fa-heart menu-icon pb-1"></i><span class="nav-text" style="font-size: 16px; margin-left: 5px;">Aboneler</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Admin/Booking/Index/" aria-expanded="false" id="navitem">
+                    <i class="fa fa-book menu-icon pb-1"></i><span class="nav-text" style="font-size: 16px; margin-left: 5px;">Rezervasyonlar</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Admin/About/Index/" aria-expanded="false" id="navitem">
+                    <i class="fa fa-info-circle menu-icon pb-1"></i><span class="nav-text" style="font-size: 16px; margin-left: 5px;">Hakkımızda</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Admin/Contact/Inbox/" aria-expanded="false" id="navitem">
+                    <i class="fa fa-envelope menu-icon pb-1"></i><span class="nav-text" style="font-size: 16px; margin-left: 5px;">Mesajlar</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Admin/User/Index/" aria-expanded="false" id="navitem">
+                    <i class="fa fa-user menu-icon pb-1"></i><span class="nav-text" style="font-size: 16px; margin-left: 5px;">Kullanıcılar</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Admin/WorkLocation/Index/" aria-expanded="false" id="navitem">
+                    <i class="fa fa-home menu-icon pb-1"></i><span class="nav-text" style="font-size: 16px; margin-left: 5px;">Şubeler</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Admin/Role/Index/" aria-expanded="false" id="navitem">
+                    <i class="fa fa-cogs menu-icon pb-1"></i><span class="nav-text" style="font-size: 16px; margin-left: 5px;">Rol İşlemleri</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const currentUrl = window.location.pathname;
+
+        const menuLinks = document.querySelectorAll('.nk-sidebar a[href]');
+
+        menuLinks.forEach(link => {
+            if (link.getAttribute('href') === currentUrl) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    });
+</script>

@@ -1,0 +1,13 @@
+﻿namespace HotelProject.WebUI.Dtos.StaffDtos
+{
+    public class ResultStaffDto
+    {
+        public int staffId { get; set; }
+        public string staffName { get; set; }
+        public string staffTitle { get; set; }
+        public string staffImageUrl { get; set; }
+        public string facebookUrl { get; set; }
+        public string xUrl { get; set; }
+        public string instagramUrl { get; set; }
+    }
+}

@@ -1,0 +1,46 @@
+﻿@using RapidApiConsume.Models
+@model IEnumerable<ImdbListVM>
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Index</title>
+	<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+	<div class="container">
+		<table class="table table-bordered table-hover my-5">
+			<thead>
+				<tr class="bg-light">
+					<th class="text-center">Sıra</th>
+					<th style="width: 150px">Film Görseli</th>
+					<th>Film Adı</th>
+					<th class="text-center">Çıkış Yılı</th>
+					<th class="text-center">Imdb Puanı</th>
+					<th class="text-center">Imdb Sayfası</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td class="text-center align-middle fs-5 fw-bold">@item.rank</td>
+						<td><img src="@item.big_image" height="250" class="img-fluid rounded" /></td>
+						<td class="align-middle fs-5">@item.title</td>
+						<td class="align-middle text-center">@item.year</td>
+						<td class="align-middle text-center"><i class="fa fa-star text-warning"></i> @item.rating</td>
+						<td class="align-middle text-center"><a target="_blank" href="@item.imdb_link" class="btn btn-outline-primary">Siteye Git</a></td>
+					</tr>
+				}
+			</tbody>
+		</table>
+
+	</div>
+</body>
+</html>

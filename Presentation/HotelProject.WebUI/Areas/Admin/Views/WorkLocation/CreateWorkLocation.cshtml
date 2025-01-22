@@ -1,0 +1,26 @@
+﻿@model CreateWorkLocationDto
+@{
+	ViewData["Title"] = "CreateWorkLocation";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+	<div class="card-body">
+		<h4 class="card-title m b-4">Şube Oluştur</h4>
+		<div class="basic-form">
+			<form method="post">
+				<div class="form-group">
+					<input type="text" class="form-control input-default" placeholder="Şube Adı" asp-for="WorkLocationName" required>
+				</div>
+				<div class="form-group">
+					@Html.DropDownListFor(x => x.WorkLocationCity, (List<SelectListItem>)ViewBag.Cities, new { @class = "form-control" })
+				</div>
+				<button class="btn btn-rounded btn-outline-primary">Kaydet</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
+

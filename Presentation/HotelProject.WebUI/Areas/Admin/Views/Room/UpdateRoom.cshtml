@@ -1,0 +1,63 @@
+﻿@model UpdateRoomDto
+@{
+    ViewData["Title"] = "UpdateRoom";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title m b-4">Oda Düzenle</h4>
+        <div class="basic-form">
+            <form method="post">
+                <input type="hidden" asp-for="RoomId" />
+                <div class="form-group">
+                    <input type="text" class="form-control input-default" placeholder="Oda Başlığı" asp-for="RoomTitle">
+                    <span asp-validation-for="RoomTitle" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control input-default" placeholder="Oda Numarası" asp-for="RoomNumber">
+                    <span asp-validation-for="RoomNumber" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control input-default" placeholder="Oda Görseli" asp-for="RoomCoverImg">
+                    <span asp-validation-for="RoomCoverImg" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control input-default" placeholder="Fiyat" asp-for="Price">
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control input-default" placeholder="Yatak Sayısı" asp-for="BedCount">
+                    <span asp-validation-for="BedCount" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control input-default" placeholder="Banyo Sayısı" asp-for="BathCount">
+                    <span asp-validation-for="BathCount" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <select class="form-control" asp-for="Wifi">
+                        <option selected>Wi-Fi</option>
+                        <option value="Var">Var</option>
+                        <option value="Yok">Yok</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control input-default" placeholder="Oda Açıklaması" asp-for="Description">
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <button class="btn btn-rounded btn-outline-primary">Kaydet</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+

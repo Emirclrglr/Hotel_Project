@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ResultTestimonialViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Referanslar</h4>
+        <div class="table-responsive">
+            <table class="table header-border table-hover verticle-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Referans Adı</th>
+                        <th scope="col">Unvanı</th>
+                        <th scope="col">Yorum</th>
+                        <th scope="col" class="text-center">Düzenle</th>
+                        <th scope="col" class="text-center">Sil</th>
+                        <th scope="col" class="text-center">Detaylar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <th>@count</th>
+                            <td>@item.testimonialName</td>
+                            <td>@item.testimonialTitle</td>
+                            <td>@item.testimonialComment</td>
+                            <td class="text-center"><a href="/Admin/Testimonial/UpdateTestimonial/@item.testimonialId" class="btn btn-rounded btn-outline-primary">Düzenle</a></td>
+                            <td class="text-center"><a href="/Admin/Testimonial/DeleteTestimonial/@item.testimonialId" class="btn btn-rounded btn-outline-danger">Sil</a></td>
+                            <td class="text-center"><a href="#" class="btn btn-rounded btn-outline-warning">Detaylar</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <a href="/Admin/Testimonial/AddTestimonial/" class="btn btn-rounded btn-outline-info">+ Yeni Referans Oluştur</a>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,93 @@
+﻿@model UpdateBookingDto
+@{
+    ViewData["Title"] = "UpdateBooking";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+	<div class="card-body">
+		<h4 class="card-title m b-4">Rezervasyon Güncelle</h4>
+		<div class="basic-form">
+			<form method="post">
+				<input type="hidden" asp-for="Id"/>
+
+				<div class="form-group">
+					<label asp-for="Name">Misafir</label>
+					<input type="text" class="form-control input-default" asp-for="Name">
+				</div>
+
+				<div class="form-group">
+					<label asp-for="Mail">E-Posta Adresi</label>
+					<input type="text" class="form-control input-default" asp-for="Mail">
+				</div>
+
+				<div class="row">
+					<div class="col-6">
+						<div class="form-group">
+							<label asp-for="Name">CheckIn Tarihi</label>
+							<input type="date" class="form-control input-default" asp-for="CheckIn">
+						</div>
+					</div>
+
+					<div class="col-6">
+						<div class="form-group">
+							<label asp-for="Name">CheckOut Tarihi</label>
+							<input type="date" class="form-control input-default" asp-for="CheckOut">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+
+					<div class="col-3">
+						<div class="form-group">
+							<label asp-for="AdultCount">Yetişkin Sayısı</label>
+							<input type="text" class="form-control input-default" asp-for="AdultCount">
+						</div>
+					</div>
+
+					<div class="col-3">
+						<div class="form-group">
+							<label asp-for="ChildCount">Çocuk Sayısı</label>
+							<input type="text" class="form-control input-default" asp-for="ChildCount">
+						</div>
+					</div>
+
+					<div class="col-3">
+						<div class="form-group">
+							<label asp-for="RoomId">Oda</label>
+							@Html.DropDownListFor(x => x.RoomId, (IEnumerable<SelectListItem>)ViewBag.RoomList, new { @class = "form-control" })
+						</div>
+					</div>
+
+					<div class="col-3">
+						<div class="form-group">
+							<label asp-for="Status">Durum</label>
+							<select class="form-control" asp-for="Status">
+								<option value="Onay Bekliyor">Onay Bekliyor</option>
+								<option value="İptal Edildi">İptal Edildi</option>
+								<option value="Onaylandı">Onaylandı</option>
+							</select>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="form-group">
+					<label asp-for="SpecialRequest">Özel İstek</label>
+					<textarea type="text" class="form-control input-default" asp-for="SpecialRequest" style="height: 100px;"></textarea>
+				</div>
+
+				<div class="form-group">
+					<label asp-for="Description">Açıklama</label>
+					<textarea type="text" class="form-control input-default" asp-for="Description" style="height: 100px;"></textarea>
+				</div>
+
+				<button class="btn btn-outline-primary">Kaydet</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+

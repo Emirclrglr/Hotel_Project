@@ -1,0 +1,35 @@
+﻿@model CreateStaffViewModel
+@{
+    ViewData["Title"] = "AddStaff";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title mb-4">Yeni Personel Girişi</h4>
+        <div class="basic-form">
+            <form method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control input-default" placeholder="Personel Adı Soyadı" asp-for="staffName"required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control input-default" placeholder="Personel Unvanı" asp-for="staffTitle" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control input-default" placeholder="Personel Görseli" asp-for="staffImageUrl" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control input-default" placeholder="X Adresi" asp-for="xUrl" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control input-default" placeholder="Instagram Adresi" asp-for="instagramUrl" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control input-default" placeholder="Facebook Adresi" asp-for="facebookUrl" required>
+                </div>
+                <button class="btn btn-rounded btn-outline-primary">Kaydet</button>
+            </form>
+        </div>
+    </div>
+</div>
+

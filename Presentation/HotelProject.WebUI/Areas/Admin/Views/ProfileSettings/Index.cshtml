@@ -1,0 +1,61 @@
+﻿@model EditUserProfileMV
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+	<div class="card-header mt-3">
+		<h4>Profil bilgileri ve Şifre güncelleme</h4>
+	</div>
+	<div class="card-body">
+		<form method="post">
+			<div class="row">
+				<div class="col-6">
+					<div class="form-group">
+						<label asp-for="Firstname">Ad</label>
+						<input type="text" class="form-control" asp-for="Firstname" required />
+					</div>
+				</div>
+				<div class="col-6">
+					<div class="form-group">
+						<label asp-for="Lastname">Soyad</label>
+						<input type="text" class="form-control" asp-for="Lastname" required />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-6">
+					<div class="form-group">
+						<label asp-for="Username">Kullanıcı Adınız</label>
+						<input type="text" class="form-control" asp-for="Username" required readonly/>
+					</div>
+				</div>
+				<div class="col-6">
+					<div class="form-group">
+						<label asp-for="Email">Email Adresiniz</label>
+						<input type="email" class="form-control" asp-for="Email" required />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-6">
+					<div class="form-group">
+						<label asp-for="Password">Şifre</label>
+						<input type="password" class="form-control" asp-for="Password" required />
+					</div>
+				</div>
+				<div class="col-6">
+					<div class="form-group">
+						<label asp-for="ConfirmPassword">Şifre Tekrar</label>
+						<input type="password" class="form-control" asp-for="ConfirmPassword" required />
+					</div>
+				</div>
+			</div>
+			<div class="btn-group d-block">
+				<button class="btn btn-rounded btn-primary btn-block">Bilgilerimi Güncelle</button>
+			</div>
+		</form>
+	</div>
+</div>
+

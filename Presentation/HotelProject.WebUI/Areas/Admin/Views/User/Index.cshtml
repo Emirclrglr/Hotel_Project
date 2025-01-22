@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ResultUserDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Kullanıcı Listesi</h4>
+        <div class="table-responsive">
+            <table class="table header-border table-hover verticle-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Kullanıcı</th>
+                        <th scope="col">Kullanıcı Adı</th>
+                        <th scope="col">E-Posta</th>
+                        <th scope="col">Şehir</th>
+                        <th scope="col">Şube</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                      
+                        <tr>
+                            <th>@count</th>
+                            <td>@item.Firstname @item.Lastname</td>
+                            <td>@item.Username</td>
+                            <td>@item.Email</td>
+                            <td>@item.City</td>
+                            <td>@item.WorkLocationName / @item.WorkLocationCity</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <a href="/Admin/Register/Index/" class="btn btn-primary btn-rounded">+ Yeni Kullanıcı Kaydet</a>
+        </div>
+    </div>
+</div>
+

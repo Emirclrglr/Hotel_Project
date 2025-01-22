@@ -1,0 +1,28 @@
+﻿@model UpdateAboutDto
+@{
+    ViewData["Title"] = "UpdateAbout";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title m b-4">Hakkımızda Düzenle</h4>
+        <div class="basic-form">
+            <form method="post">
+                <input type="hidden" asp-for="AboutId" />
+                <div class="form-group">
+                    <input type="text" class="form-control input-default" placeholder="Başlık 1" asp-for="Title1" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control input-default" placeholder="Başlık 2" asp-for="Title2" required>
+                </div>
+                <div class="form-group">
+                    <textarea type="text" class="form-control input-default" style="height: 300px" placeholder="Hakkımızda İçeriği" asp-for="AboutContent" required></textarea>
+                </div>
+                <button class="btn btn-rounded btn-outline-primary">Kaydet</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+

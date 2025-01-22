@@ -1,0 +1,97 @@
+﻿@model IEnumerable<ResultRoomDto>
+@{
+    int dataDelay = 0;
+}
+
+<style>
+    .modal-body {
+        max-height: 600px;
+        overflow-y: auto;
+        width: 500px;
+    }
+
+</style>
+
+<div class="container-xxl py-5" id="rooms">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title text-center text-primary text-uppercase">Odalarımız</h6>
+            <h1 class="mb-5">Odalarımızı <span class="text-primary text-uppercase">Keşfedin</span></h1>
+        </div>
+        <div class="row g-4">
+            @foreach (var item in Model)
+            {
+                string roomDescription;
+                if (item.Description.Length >= 90)
+                {
+                    roomDescription = $"{item.Description.Substring(0, 90).Trim()}...";
+                }
+                else
+                {
+                    roomDescription = item.Description;
+                }
+                dataDelay++;
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=@($"0.{dataDelay}s")>
+                    <div class="room-item shadow rounded overflow-hidden">
+                        <div class="position-relative">
+                            <img class="" src="@item.RoomCoverImg" alt="" width="450" height="320">
+                            <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">₺@item.Price.ToString("N0")/Gecelik</small>
+                        </div>
+                        <div class="p-4 mt-2">
+                            <div class="d-flex justify-content-between mb-3">
+                                <h5 class="mb-0">@item.RoomTitle</h5>
+                                <div class="ps-2">
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>@item.BedCount</small>
+                                <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>@item.BathCount</small>
+                                @if (item.Wifi == "Var")
+                                {
+                                    <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
+                                }
+
+                            </div>
+                            <p class="text-body mb-3">@roomDescription</p>
+                            <div class="d-flex justify-content-between">
+                                <button type="button" class="btn btn-sm btn-primary rounded py-2 px-4" data-bs-toggle="modal" data-bs-target="#@($"roomModal{item.RoomId}")">Detaylar</button>
+                                <a class="btn btn-sm btn-dark rounded py-2 px-4" href="/Booking/Index/">Rezervasyon Yap</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="@($"roomModal{item.RoomId}")" tabindex="-1" aria-labelledby="@($"roomModal{item.RoomId}")" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="@($"roomModal{item.RoomId}")">@item.RoomTitle</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="@item.RoomCoverImg" alt="@item.RoomTitle" class="img-fluid rounded mb-3">
+                                <p>@Html.Raw(item.Description.Replace("\n", "<br />"))</p>
+                                <ul>
+                                    <li><strong>Yatak Sayısı:</strong> @item.BedCount</li>
+                                    <li><strong>Banyo Sayısı:</strong> @item.BathCount</li>
+                                    <li><strong>Wifi:</strong> @item.Wifi</li>
+                                    <li><strong>Fiyat:</strong> ₺@item.Price.ToString("N0")/Gecelik</li>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+                                <a class="btn btn-primary" href="/Booking/Index/">Rezervasyon Yap</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

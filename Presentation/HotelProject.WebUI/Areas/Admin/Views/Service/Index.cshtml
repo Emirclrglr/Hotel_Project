@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ResultServiceDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Hizmetler</h4>
+        <div class="table-responsive">
+            <table class="table header-border table-hover verticle-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Hizmet Adı</th>
+                        <th scope="col" class="text-center">Düzenle</th>
+                        <th scope="col" class="text-center">Sil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <th>@count</th>
+                            <td>@item.ServiceTitle</td>
+                            <td class="text-center"><a href="/Admin/Service/UpdateService/@item.ServiceId" class="btn btn-rounded btn-outline-primary">Düzenle</a></td>
+                            <td class="text-center"><a href="/Admin/Service/DeleteService/@item.ServiceId" class="btn btn-rounded btn-outline-danger">Sil</a></td>
+                            <td class="text-center"><a href="#" class="btn btn-rounded btn-outline-warning">Detaylar</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <a href="/Admin/Service/AddService/" class="btn btn-rounded btn-outline-info">+ Yeni Hizmet Girişi</a>
+        </div>
+    </div>
+</div>
+
+
+

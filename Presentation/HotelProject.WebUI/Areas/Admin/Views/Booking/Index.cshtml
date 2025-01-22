@@ -1,0 +1,68 @@
+﻿@model IEnumerable<ResultBookingDto>
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+	int count = 0;
+
+}
+
+<div class="card">
+	<div class="card-body">
+		<h4 class="card-title">Rezervasyonlar</h4>
+		<div class="table-responsive">
+			<table class="table header-border table-hover verticle-middle">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Misafir</th>
+						<th scope="col">E-Posta Adresi</th>
+						<th scope="col" class="text-center">CheckIn Tarihi</th>
+						<th scope="col" class="text-center">CheckOut Tarihi</th>
+						<th scope="col" class="text-center">Durum</th>
+						<th scope="col" class="text-center">Onayla</th>
+						<th scope="col" class="text-center">İptal Et</th>
+						<th scope="col" class="text-center">Beklet</th>
+						<th scope="col" class="text-center">Güncelle</th>
+						<th scope="col" class="text-center">Detaylar</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model)
+					{
+						count++;
+						var badgeClass = "";
+
+						if (item.Status == "Onay Bekliyor")
+						{
+							badgeClass = "label label-pill label-warning";
+						}
+						else if (item.Status == "İptal Edildi")
+						{
+							badgeClass = "label label-pill label-danger";
+						}
+						else if (item.Status == "Onaylandı")
+						{
+							badgeClass = "label label-pill label-success";
+						}
+
+						<tr>
+							<th>@count</th>
+							<td>@item.Name</td>
+							<td>@item.Mail</td>
+							<td class="text-center">@(((DateTime)item.CheckIn).ToString("dd.MM.yyyy"))</td>
+							<td class="text-center">@(((DateTime)item.CheckOut).ToString("dd.MM.yyyy"))</td>
+							<td class="text-center"><span class="@badgeClass">@item.Status</span></td>
+							<td class="text-center"><a href="/Admin/Booking/ApproveReservation/@item.Id" class="btn btn-rounded btn-outline-primary">Onayla</a></td>
+							<td class="text-center"><a href="/Admin/Booking/DenyReservation/@item.Id" class="btn btn-rounded btn-outline-danger">İptal Et</a></td>
+							<td class="text-center"><a href="/Admin/Booking/HoldReservation/@item.Id" class="btn btn-rounded btn-outline-warning">Beklet</a></td>
+							<td class="text-center"><a href="/Admin/Booking/UpdateBooking/@item.Id" class="btn btn-rounded btn-outline-primary">Güncelle</a></td>
+							<td class="text-center"><a href="/Admin/Booking/BookingDetails/@item.Id" class="btn btn-rounded btn-outline-dark">Detaylar</a></td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+

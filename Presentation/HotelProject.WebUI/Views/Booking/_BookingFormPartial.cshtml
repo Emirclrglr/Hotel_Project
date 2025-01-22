@@ -1,0 +1,92 @@
+﻿@model CreateBookingDto
+
+<link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+
+<div class="col-lg-6">
+	<div class="wow fadeInUp" data-wow-delay="0.2s">
+		<form id="bookingForm" method="post" asp-action="_BookingFormPartial" asp-controller="Booking">
+			<div class="row g-3">
+				<div class="col-md-6">
+					<div class="form-floating">
+						<input type="text" class="form-control" id="name" asp-for="Name" placeholder="Adınız Soyadınız" required>
+						<label for="name">Adınız Soyadınız</label>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-floating">
+						<input type="email" class="form-control" id="email" placeholder="Email Adresiniz" asp-for="Mail" required>
+						<label for="email">Email Adresiniz</label>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-floating">
+						<input type="text" class="form-control" id="checkin" placeholder="Check In" asp-for="CheckIn" required>
+						<label for="checkin">Check In</label>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-floating">
+						<input type="text" class="form-control" id="checkout" placeholder="Check Out" asp-for="CheckOut" required>
+						<label for="checkout">Check Out</label>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-floating">
+						<select class="form-select" id="select1" asp-for="AdultCount" required>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+						</select>
+						<label for="select1">Yetişkin Sayısı</label>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-floating">
+						<select class="form-select" id="select2" asp-for="ChildCount" required>
+							<option value="0">0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+						</select>
+						<label for="select2">Çocuk Sayısı</label>
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="form-floating">
+						@Html.DropDownListFor(x => x.RoomId, (IEnumerable<SelectListItem>)ViewBag.RoomList, new {@class = "form-select"})
+						<label asp-for="RoomId">Oda</label>
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="form-floating">
+						<textarea class="form-control" placeholder="Varsa Özel İsteğiniz" id="message" style="height: 100px" asp-for="SpecialRequest"></textarea>
+						<label for="message">Özel İstek (İsteğe Bağlı)</label>
+					</div>
+				</div>
+				<div class="col-12">
+					<button class="btn btn-primary w-100 py-3" type="submit">Rezervasyon Yap</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/tr.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/js/booking.js"></script>
+<script src="~/js/flatpickr.js"></script>

@@ -1,0 +1,45 @@
+﻿@model ReplyMessageDto
+@{
+	ViewData["Title"] = "ReplyMessage";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+	
+	Model.ReceiverName = Model.ContactName;
+	Model.ReceiverMail = Model.ContactMail;
+
+}
+
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-body">
+				@await Html.PartialAsync("_MailBoxSideBarPartial")
+				<div class="email-right-box">
+					<div class="compose-content">
+						<form id="sendMessageForm" method="post">
+							<input type="hidden" asp-for="Id"/>
+							<div class="form-group">
+								<input type="email" class="form-control bg-transparent" placeholder="Alıcı Mail Adresi" asp-for="ReceiverMail" required>
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control bg-transparent" placeholder="Alıcı Adı Soyadı" asp-for="ReceiverName" required>
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control bg-transparent" placeholder="Konu" asp-for="Subject" required>
+							</div>
+							<div class="form-group">
+								<textarea class="textarea_editor form-control bg-light" rows="15" placeholder="Mesajınızı Yazınız..." asp-for="Message" required></textarea>
+							</div>
+							<div class="text-left m-t-15">
+								<button type="submit" class="btn btn-primary m-b-30 m-t-15 f-s-14 p-l-20 p-r-20 m-r-10">
+									<i class="fa fa-paper-plane m-r-5"></i> Gönder
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+

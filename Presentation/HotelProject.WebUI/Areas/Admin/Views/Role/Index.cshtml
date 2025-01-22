@@ -1,0 +1,40 @@
+﻿@model IEnumerable<AppRole>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Rol Listesi</h4>
+        <div class="table-responsive">
+            <table class="table header-border table-hover verticle-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Rol adı</th>
+                        <th scope="col" class="text-center">Düzenle</th>
+                        <th scope="col" class="text-center">Sil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <th class="align-middle">@count</th>
+                            <td>@item.Name</td>
+                            <td class="text-center"><a href="/Admin/Role/UpdateRole/@item.Id" class="btn btn-rounded btn-outline-primary">Düzenle</a></td>
+                            <td class="text-center"><a href="/Admin/Role/DeleteRole/@item.Id" class="btn btn-rounded btn-outline-danger">Sil</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <a href="/Admin/Role/AddRole/" class="btn btn-rounded btn-outline-info">+ Yeni Rol Ekle</a>
+            <a href="/Admin/AssignRole/Index/" class="btn btn-rounded btn-outline-warning mx-2 px-5">Rol Ata</a>
+        </div>
+    </div>
+</div>
+
+

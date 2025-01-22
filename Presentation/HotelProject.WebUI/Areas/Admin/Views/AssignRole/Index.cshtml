@@ -1,0 +1,35 @@
+﻿@model IEnumerable<AppUser>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Kullanıcı Listesi</h4>
+        <div class="table-responsive">
+            <table class="table header-border table-hover verticle-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Kullanıcı</th>
+                        <th scope="col" class="text-center">Rol Ata</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <th class="align-middle">@count</th>
+                            <td>@item.Firstname @item.Lastname</td>
+                            <td class="text-center"><a href="/Admin/AssignRole/RoleAssign/@item.Id" class="btn btn-rounded btn-outline-warning">Rol Ata</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

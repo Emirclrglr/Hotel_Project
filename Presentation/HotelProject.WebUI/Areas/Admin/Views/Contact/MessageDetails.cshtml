@@ -1,0 +1,45 @@
+﻿@model InboxContactDto
+@{
+	ViewData["Title"] = "MessageDetails";
+	Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-body">
+				@await Html.PartialAsync("_MailBoxSideBarPartial")
+				<div class="email-right-box">
+					<div class="read-content">
+						<div class="media">
+							<img class="mr-3 rounded-circle" height="70" width="70" src="https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg">
+							<div class="media-body">
+								<h5 class="m-b-3">@Model.ContactName</h5>
+								<p class="m-b-2">@Model.ContactDate.ToString("dd MMMM, yyyy")</p>
+							</div>
+
+						</div>
+						<hr>
+						<div class="media mb-4 mt-1">
+							<div class="media-body">
+								<span class="float-right">@Model.ContactDate.ToString("HH:mm")</span>
+								<h4 class="m-0 text-primary">@Model.Subject</h4><small class="text-muted">Kime:Bana, admin@gmail.com</small>
+							</div>
+						</div>
+						<p style="height: 100%">
+							@Html.Raw(Model.ContactMessage.Replace("\n", "<br />"))
+						</p>
+
+						<hr>
+
+						<div class="form-group">
+							<a href="/Admin/Contact/ReplyMessage/@Model.ContactId" class="btn btn-rounded btn-primary"><i class="fa fa-reply" aria-hidden="true"></i> Yanıtla</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
