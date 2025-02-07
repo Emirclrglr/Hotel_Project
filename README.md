@@ -3,7 +3,7 @@
 ## 📜 Genel Bakış
 Bu proje, Murat Yücedağ hocamızın hazırlamış olduğu ve Udemy üzerinde yayınladığı "Asp.Net Core Api - Rapid Api ve Api Consume" Projesi kursunda geliştirilmiştir.
 
-Bu, bir otel rezervasyon sistemi geliştirmeye yönelik bir eğitim projesidir. Bu projeyi geliştirirken aşağıdaki teknolojiler ve araçlar kullanılmıştır. 🚀
+Bu, bir otel rezervasyon sistemi geliştirmeye yönelik bir eğitim projesidir. Projeyi geliştirirken aşağıdaki teknolojiler ve araçlar kullanılmıştır. 🚀
 
 ---
 
